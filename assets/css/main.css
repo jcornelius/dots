@@ -53,7 +53,6 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--gold);
-  letter-spacing: 0.05em;
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
@@ -92,7 +91,6 @@ body {
   font-style: italic;
   font-weight: 400;
   color: var(--gold);
-  letter-spacing: 0.03em;
   text-shadow: 0 1px 8px rgba(0,0,0,0.6);
 }
 
@@ -115,7 +113,7 @@ body {
 .limerick {
   font-family: "Playfair Display", Georgia, serif;
   font-style: italic;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
   color: var(--white);
   line-height: 2;
   max-width: 600px;
@@ -128,6 +126,50 @@ body {
   background: var(--gold);
   border: none;
   margin: 0 auto 2.5rem;
+}
+
+/* ── Charter Section ──────────────────────────────────────── */
+
+.charter-section {
+  background: var(--green);
+  padding: 4rem 2rem;
+}
+
+.charter-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.charter-block {
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 2rem 2.25rem;
+  color: var(--white);
+}
+
+.charter-block--highlight {
+  border: 2px solid var(--gold);
+}
+
+.charter-block h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 1rem;
+}
+
+.charter-block p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .charter-inner { grid-template-columns: 1fr; }
 }
 
 /* ── Dots Section ─────────────────────────────────────────── */
@@ -147,15 +189,13 @@ body {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
   color: var(--green);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .section-subtitle {
   margin-top: 0.6rem;
   font-family: "Playfair Display", Georgia, serif;
   font-style: italic;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: var(--text-mid);
 }
 
@@ -202,7 +242,6 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--green);
-  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -247,7 +286,7 @@ body {
   margin-top: 0.5rem;
   font-size: 0.82rem;
   font-style: italic;
-  color: var(--gold);
+  color: var(--green);
 }
 
 /* ── Rules Notes ──────────────────────────────────────────── */
@@ -255,25 +294,24 @@ body {
 .rules-notes {
   max-width: 1100px;
   margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.notes-block {
   background: var(--green);
   color: var(--white);
   border-radius: 6px;
   padding: 1.75rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-@media (max-width: 640px) {
-  .rules-notes { grid-template-columns: 1fr; gap: 1.25rem; }
+  width: 100%;
 }
 
 .notes-block h3 {
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--gold);
-  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
@@ -315,8 +353,7 @@ body {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.06em;
+  color: var(--white);
 }
 
 .footer-tagline {
@@ -324,7 +361,7 @@ body {
   font-family: "Playfair Display", Georgia, serif;
   font-style: italic;
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.65);
+  color: var(--gold);
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
