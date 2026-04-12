@@ -1,0 +1,12 @@
+title: Sticks & Steaks
+description: "don't threaten us with a good time"
+url: "https://sticksandsteaks.com"
+baseurl: ""
+permalink: pretty
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
