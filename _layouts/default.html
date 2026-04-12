@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +20,7 @@
     <div class="footer-inner">
       <p class="footer-title">Sticks &amp; Steaks</p>
       <p class="footer-tagline">don't threaten us with a good time</p>
+      <p class="footer-copyright">&copy; {{ 'now' | date: "%Y" }} Sticks &amp; Steaks. All rights reserved.</p>
     </div>
   </footer>
 </body>

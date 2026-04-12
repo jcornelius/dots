@@ -3,3 +3,5 @@ vendor/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+.ruby-version
+.DS_Store

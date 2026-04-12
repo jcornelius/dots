@@ -1,0 +1,49 @@
+---
+layout: default
+title: Birdies | Sticks & Steaks
+description: "Photo gallery from our golf adventures"
+---
+
+<!-- ── Navbar ───────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="navbar-brand">Sticks & Steaks</a>
+    <div class="navbar-links">
+      <a href="/" class="navbar-link">Dots</a>
+      <a href="/birdies/" class="navbar-link navbar-link--active">Birdies</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Gallery Hero ──────────────────────────────────────────── -->
+<section class="gallery-hero">
+  <div class="gallery-hero-content">
+    <h1 class="hero-title">Birdies</h1>
+    <p class="hero-subtitle">Captured moments from the fairways</p>
+    <div class="hero-divider"></div>
+  </div>
+</section>
+
+<!-- ── Photo Gallery ────────────────────────────────────────── -->
+<section class="gallery-section">
+  <div class="gallery-grid">
+    {% assign birdie_images = site.static_files | where_exp: "file", "file.path contains '/images/birdies/'" %}
+
+    {% if birdie_images.size > 0 %}
+      {% for image in birdie_images %}
+        {% assign ext = image.extname | downcase %}
+        {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
+          <div class="gallery-item">
+            <img src="{{ image.path | relative_url }}" alt="Golf photo" class="gallery-image" loading="lazy">
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <div class="gallery-empty">
+        <div class="empty-icon">📸</div>
+        <h3>No photos yet</h3>
+        <p>Add images to the <code>images/birdies/</code> folder to see them here.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
