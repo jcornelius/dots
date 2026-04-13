@@ -529,3 +529,586 @@ body {
   .navbar-inner { padding: 0.75rem 1.25rem; }
   .dots-section { padding: 3.5rem 1.25rem; }
 }
+
+/* ============================================================
+   Play Tab
+   ============================================================ */
+
+/* ── Play Hero ───────────────────────────────────────────── */
+
+.play-hero {
+  min-height: 30vh;
+  background-image:
+    linear-gradient(rgba(28, 73, 50, 0.9), rgba(28, 73, 50, 0.9)),
+    url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 3rem;
+}
+
+.play-hero-content { max-width: 800px; }
+
+/* ── Play Section ────────────────────────────────────────── */
+
+.play-section {
+  background: var(--cream);
+  padding: 2.5rem 1rem;
+  min-height: 60vh;
+}
+
+/* ── Buttons (shared) ────────────────────────────────────── */
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+.btn-primary:hover {
+  background: var(--green-light);
+  border-color: var(--green-light);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--green);
+  border-color: var(--green);
+}
+.btn-secondary:hover { background: rgba(28,73,50,0.08); }
+
+.btn-danger {
+  background: transparent;
+  color: #b33;
+  border-color: #b33;
+}
+.btn-danger:hover { background: rgba(187,51,51,0.08); }
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.88rem;
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+.btn-small:hover {
+  background: var(--green-light);
+  border-color: var(--green-light);
+}
+
+/* ── Setup Screen ────────────────────────────────────────── */
+
+.play-setup {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.setup-section {
+  margin-bottom: 2.25rem;
+}
+
+.setup-label {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.player-name {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.player-remove {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--text-mid);
+  cursor: pointer;
+  padding: 0 0.3rem;
+  line-height: 1;
+}
+.player-remove:hover { color: #b33; }
+
+.player-add-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.player-input {
+  flex: 1;
+  padding: 0.55rem 0.85rem;
+  border: 2px solid rgba(0,0,0,0.12);
+  border-radius: 6px;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.player-input:focus { border-color: var(--green); }
+
+.setup-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.setup-option {
+  padding: 0.65rem 1.3rem;
+  border: 2px solid var(--green);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--green);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.setup-option:hover {
+  background: rgba(28,73,50,0.08);
+}
+.setup-option--active {
+  background: var(--green);
+  color: var(--gold);
+}
+.setup-option--wide { flex: 1; }
+
+.setup-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.rounds-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.round-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.round-leader {
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* ── Play Screen ─────────────────────────────────────────── */
+
+.play-round {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.play-hole-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.play-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--green);
+  background: transparent;
+  color: var(--green);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-nav-btn:hover {
+  background: var(--green);
+  color: var(--white);
+}
+.play-nav-btn--disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.play-hole-title { text-align: center; }
+.play-hole-num {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--green);
+  display: block;
+}
+.play-hole-of {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+
+/* ── Progress Dots ───────────────────────────────────────── */
+
+.play-progress {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.progress-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.06);
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.progress-dot--filled {
+  background: var(--green);
+  color: var(--white);
+  opacity: 0.5;
+}
+.progress-dot--current {
+  background: var(--green);
+  color: var(--gold);
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+/* ── Scoring Matrix ──────────────────────────────────────── */
+
+.play-matrix-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.25rem;
+}
+
+.play-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.play-matrix thead { border-bottom: 2px solid var(--green); background: var(--cream); }
+
+.play-matrix th,
+.play-matrix td {
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.play-matrix-corner {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--cream);
+  min-width: 110px;
+}
+
+.play-matrix-player {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  padding: 0.6rem 0.5rem;
+  white-space: nowrap;
+  min-width: 64px;
+}
+
+.play-matrix-cat {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--cream);
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  white-space: nowrap;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.play-matrix-cat-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cat-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.cat-pips {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  display: inline-block;
+}
+.pip--neg {
+  background: #b33;
+}
+
+.play-matrix tbody tr { border-bottom: 1px solid rgba(0,0,0,0.04); }
+.play-matrix tbody tr:last-child { border-bottom: none; }
+
+.play-matrix-cell {
+  cursor: pointer;
+  min-width: 56px;
+  height: 52px;
+  transition: background 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  position: relative;
+}
+.play-matrix-cell::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(28,73,50,0.12);
+  display: block;
+  margin: 0 auto;
+  transition: border-color 0.15s ease;
+}
+.play-matrix-cell:hover::after { border-color: rgba(28,73,50,0.25); }
+.play-matrix-cell--active::after {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.play-matrix-divider td {
+  padding: 0.5rem 0.6rem;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  background: rgba(28,73,50,0.06);
+  text-align: left;
+}
+
+/* ── Running Totals ──────────────────────────────────────── */
+
+.play-running-totals {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.hpt {
+  flex: 1;
+  min-width: 80px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+}
+.hpt-name {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.hpt-dots {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ── Play Actions ────────────────────────────────────────── */
+
+.play-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Summary Screen ──────────────────────────────────────── */
+
+.play-summary {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.summary-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--green);
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.summary-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  margin-bottom: 2rem;
+}
+
+.summary-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.summary-table th {
+  padding: 0.75rem 0.6rem;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid var(--green);
+}
+.summary-table th:first-child { text-align: left; }
+
+.summary-table td {
+  padding: 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.st-player {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.st-dots { color: var(--text-mid); }
+.st-dots--total {
+  font-weight: 700;
+  color: var(--green);
+  font-size: 1.05rem;
+}
+
+.st-total-row td { border-top: 2px solid var(--green); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.st-net-row td { border-bottom: none; }
+
+.st-net { font-weight: 700; }
+.st-net--pos { color: var(--green); }
+.st-net--neg { color: #b33; }
+
+.summary-pairs {
+  margin-bottom: 2rem;
+}
+
+.summary-pairs-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+}
+
+.pair-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: var(--white);
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.92rem;
+}
+
+.pair-from { font-weight: 600; color: #b33; }
+.pair-arrow { color: var(--text-mid); font-size: 0.82rem; }
+.pair-to { font-weight: 600; color: var(--green); }
+.pair-amount {
+  margin-left: auto;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+.summary-tied {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-mid);
+  padding: 1rem 0;
+}
+
+/* ── Play Responsive ─────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .play-hero { min-height: 22vh; padding: 5rem 1.25rem 2rem; }
+  .play-section { padding: 1.5rem 0.75rem; }
+  .play-matrix-player { font-size: 0.72rem; min-width: 52px; padding: 0.5rem 0.3rem; }
+  .play-matrix-cell { min-width: 48px; height: 44px; }
+  .play-matrix-corner { min-width: 90px; }
+  .cat-name { font-size: 0.78rem; }
+  .progress-dot { width: 20px; height: 20px; font-size: 0.58rem; }
+}
