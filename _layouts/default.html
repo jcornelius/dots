@@ -18,9 +18,9 @@
   <div class="navbar-inner">
     <a href="/" class="navbar-brand">Sticks & Steaks</a>
     <div class="navbar-links">
-      <a href="/" class="navbar-link">Dots</a>
-      <a href="/birdies/" class="navbar-link">Birdies</a>
-      <a href="/play/" class="navbar-link">Play</a>
+      <a href="/dots/" class="navbar-link{% if page.url == '/dots/' %} navbar-link--active{% endif %}">Dots</a>
+      <a href="/birdies/" class="navbar-link{% if page.url == '/birdies/' %} navbar-link--active{% endif %}">Birdies</a>
+      <a href="/play/" class="navbar-link{% if page.url == '/play/' %} navbar-link--active{% endif %}">Play</a>
     </div>
   </div>
 </nav>
