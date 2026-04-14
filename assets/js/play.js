@@ -178,14 +178,15 @@
     var playersHtml = state.players.map(function (p, i) {
       return '<div class="player-item">' +
         '<span class="player-name">' + esc(p) + '</span>' +
-        '<button class="player-remove" data-index="' + i + '">&times;</button>' +
+        '<button class="player-remove" data-index="' + i + '" aria-label="Remove ' + esc(p) + '">&times;</button>' +
         '</div>';
     }).join('');
 
     var dotOptions = [0.25, 0.50, 1.00].map(function (v) {
+      var isActive = state.dotValue === v;
       return '<button class="setup-option ' +
-        (state.dotValue === v ? 'setup-option--active' : '') +
-        '" data-value="' + v + '">$' + v.toFixed(2) + '</button>';
+        (isActive ? 'setup-option--active' : '') +
+        '" data-value="' + v + '" aria-pressed="' + isActive + '">$' + v.toFixed(2) + '</button>';
     }).join('');
 
     var roundsHtml = '';
@@ -221,15 +222,16 @@
     app().innerHTML =
       '<div class="play-setup">' +
       '<div class="setup-section">' +
-      '<h3 class="setup-label">Players</h3>' +
-      '<div class="player-list">' + playersHtml + '</div>' +
+      '<h3 class="setup-label" id="players-label">Players</h3>' +
+      '<div class="player-list" role="list" aria-labelledby="players-label">' + playersHtml + '</div>' +
       '<div class="player-add-row">' +
+      '<label for="player-input" class="sr-only">Player name</label>' +
       '<input type="text" id="player-input" class="player-input" placeholder="Player name" maxlength="20" autocomplete="off">' +
       '<button class="btn btn-small" id="add-player-btn">Add</button>' +
       '</div></div>' +
       '<div class="setup-section">' +
-      '<h3 class="setup-label">Dot Value</h3>' +
-      '<div class="setup-options" id="dot-value-options">' + dotOptions + '</div>' +
+      '<h3 class="setup-label" id="dot-value-label">Dot Value</h3>' +
+      '<div class="setup-options" id="dot-value-options" role="group" aria-labelledby="dot-value-label">' + dotOptions + '</div>' +
       '</div>' +
       (activeRound ? '' :
         '<div class="setup-section">' +
@@ -366,6 +368,8 @@
           val = (round.dots[hole] && round.dots[hole][cat.id] && round.dots[hole][cat.id][pi]) || 0;
         }
         return '<td class="play-matrix-cell ' + (val ? 'play-matrix-cell--active' : '') + '" ' +
+          'role="checkbox" aria-checked="' + (val ? 'true' : 'false') + '" ' +
+          'aria-label="' + esc(cat.name) + ' for ' + esc(p) + '" tabindex="0" ' +
           'data-player="' + pi + '" data-cat="' + cat.id + '"' +
           (cat.isPer9 ? ' data-per9="' + cat.nineGroup + '"' : '') + '>' +
           '</td>';
@@ -398,23 +402,27 @@
           if (arr && arr.some(function (v) { return v > 0; })) { hasData = true; return true; }
         });
       }
-      progressHtml += '<span class="progress-dot ' +
+      var dotLabel = 'Go to hole ' + h;
+      if (h === hole) dotLabel = 'Hole ' + h + ' (current)';
+      progressHtml += '<button class="progress-dot ' +
         (h === hole ? 'progress-dot--current' : '') +
         (hasData ? ' progress-dot--filled' : '') +
-        '">' + h + '</span>';
+        '" aria-label="' + dotLabel + '"' +
+        (h === hole ? ' aria-current="step"' : '') +
+        '>' + h + '</button>';
     }
 
     app().innerHTML =
       '<div class="play-round">' +
       '<div class="play-hole-header">' +
-      '<button class="play-nav-btn ' + (hole === 1 ? 'play-nav-btn--disabled' : '') + '" id="prev-hole">&larr;</button>' +
+      '<button class="play-nav-btn ' + (hole === 1 ? 'play-nav-btn--disabled' : '') + '" id="prev-hole" aria-label="Previous hole"' + (hole === 1 ? ' aria-disabled="true"' : '') + '>&larr;</button>' +
       '<div class="play-hole-title">' +
       '<span class="play-hole-num">Hole ' + hole + '</span>' +
       '<span class="play-hole-of">of ' + round.holes + '</span>' +
       '</div>' +
-      '<button class="play-nav-btn ' + (isLast ? 'play-nav-btn--disabled' : '') + '" id="next-hole">&rarr;</button>' +
+      '<button class="play-nav-btn ' + (isLast ? 'play-nav-btn--disabled' : '') + '" id="next-hole" aria-label="Next hole"' + (isLast ? ' aria-disabled="true"' : '') + '>&rarr;</button>' +
       '</div>' +
-      '<div class="play-progress">' + progressHtml + '</div>' +
+      '<div class="play-progress" role="navigation" aria-label="Hole navigation">' + progressHtml + '</div>' +
       '<div class="play-matrix-wrap">' +
       '<table class="play-matrix">' +
       '<thead><tr><th class="play-matrix-corner"></th>' + playerHeaders + '</tr></thead>' +
@@ -441,30 +449,38 @@
     // Progress dot tap to jump
     document.querySelectorAll('.progress-dot').forEach(function (dot) {
       dot.addEventListener('click', function () {
-        state.currentHole = parseInt(dot.textContent);
+        state.currentHole = parseInt(dot.textContent.trim());
         render();
       });
     });
 
     // Matrix cell toggle
-    document.querySelectorAll('.play-matrix-cell').forEach(function (cell) {
-      cell.addEventListener('click', function () {
-        var pi = parseInt(cell.dataset.player);
-        var catId = cell.dataset.cat;
-        var per9 = cell.dataset.per9;
+    function toggleCell(cell) {
+      var pi = parseInt(cell.dataset.player);
+      var catId = cell.dataset.cat;
+      var per9 = cell.dataset.per9;
 
-        if (per9) {
-          var nine = parseInt(per9);
-          if (!round.per9[nine]) round.per9[nine] = {};
-          if (!round.per9[nine][catId]) round.per9[nine][catId] = new Array(state.players.length).fill(0);
-          round.per9[nine][catId][pi] = round.per9[nine][catId][pi] ? 0 : 1;
-        } else {
-          var hole = state.currentHole;
-          if (!round.dots[hole]) round.dots[hole] = {};
-          if (!round.dots[hole][catId]) round.dots[hole][catId] = new Array(state.players.length).fill(0);
-          round.dots[hole][catId][pi] = round.dots[hole][catId][pi] ? 0 : 1;
+      if (per9) {
+        var nine = parseInt(per9);
+        if (!round.per9[nine]) round.per9[nine] = {};
+        if (!round.per9[nine][catId]) round.per9[nine][catId] = new Array(state.players.length).fill(0);
+        round.per9[nine][catId][pi] = round.per9[nine][catId][pi] ? 0 : 1;
+      } else {
+        var hole = state.currentHole;
+        if (!round.dots[hole]) round.dots[hole] = {};
+        if (!round.dots[hole][catId]) round.dots[hole][catId] = new Array(state.players.length).fill(0);
+        round.dots[hole][catId][pi] = round.dots[hole][catId][pi] ? 0 : 1;
+      }
+      render();
+    }
+
+    document.querySelectorAll('.play-matrix-cell').forEach(function (cell) {
+      cell.addEventListener('click', function () { toggleCell(cell); });
+      cell.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleCell(cell);
         }
-        render();
       });
     });
 
