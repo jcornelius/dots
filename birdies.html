@@ -6,31 +6,33 @@ description: "Photo gallery from our golf adventures"
 
 
 <!-- ── Gallery Hero ──────────────────────────────────────────── -->
-<section class="gallery-hero">
+<section class="gallery-hero" aria-label="Birdies gallery">
   <div class="gallery-hero-content">
     <h1 class="hero-title">Birdies</h1>
     <p class="hero-subtitle">Captured moments from the fairways</p>
-    <div class="hero-divider"></div>
+    <div class="hero-divider" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- ── Photo Gallery ────────────────────────────────────────── -->
-<section class="gallery-section">
-  <div class="gallery-grid">
+<section class="gallery-section" aria-labelledby="gallery-title">
+  <h2 id="gallery-title" class="sr-only">Photo Gallery</h2>
+  <div class="gallery-grid" role="list">
     {% assign birdie_images = site.static_files | where_exp: "file", "file.path contains '/images/birdies/'" %}
 
     {% if birdie_images.size > 0 %}
       {% for image in birdie_images %}
         {% assign ext = image.extname | downcase %}
         {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
-          <div class="gallery-item">
-            <img src="{{ image.path | relative_url }}" alt="Golf photo" class="gallery-image" loading="lazy">
+          {% assign filename = image.basename | replace: '-', ' ' | replace: '_', ' ' %}
+          <div class="gallery-item" role="listitem">
+            <img src="{{ image.path | relative_url }}" alt="{{ filename }}" class="gallery-image" loading="lazy">
           </div>
         {% endif %}
       {% endfor %}
     {% else %}
-      <div class="gallery-empty">
-        <div class="empty-icon">📸</div>
+      <div class="gallery-empty" role="listitem">
+        <div class="empty-icon" aria-hidden="true">📸</div>
         <h3>No photos yet</h3>
         <p>Add images to the <code>images/birdies/</code> folder to see them here.</p>
       </div>

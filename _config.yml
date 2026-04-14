@@ -4,6 +4,10 @@ url: "https://sticksandsteaks.com"
 baseurl: ""
 permalink: pretty
 
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
 # Exclude from build
 exclude:
   - Gemfile

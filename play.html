@@ -4,30 +4,18 @@ title: Play | Sticks & Steaks
 description: "Track your dots game"
 ---
 
-<!-- ── Navbar ───────────────────────────────────────────────── -->
-<nav class="navbar">
-  <div class="navbar-inner">
-    <a href="/" class="navbar-brand">Sticks & Steaks</a>
-    <div class="navbar-links">
-      <a href="/" class="navbar-link">Dots</a>
-      <a href="/birdies/" class="navbar-link">Birdies</a>
-      <a href="/play/" class="navbar-link navbar-link--active">Play</a>
-    </div>
-  </div>
-</nav>
-
 <!-- ── Play Hero ────────────────────────────────────────────── -->
-<section class="play-hero">
+<section class="play-hero" aria-label="Play">
   <div class="play-hero-content">
     <h1 class="hero-title">Play</h1>
     <p class="hero-subtitle">Track dots, settle up</p>
-    <div class="hero-divider"></div>
+    <div class="hero-divider" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- ── Play App ─────────────────────────────────────────────── -->
-<section class="play-section">
-  <div id="play-app"></div>
+<section class="play-section" aria-label="Dots scoring app">
+  <div id="play-app" aria-live="polite"></div>
 </section>
 
 <script src="{{ '/assets/js/play.js' | relative_url }}"></script>

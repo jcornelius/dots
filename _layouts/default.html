@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% seo %}
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,22 +12,26 @@
 </head>
 <body>
 
+<!-- ── Skip Link ───────────────────────────────────────────── -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ── Navbar ───────────────────────────────────────────────── -->
-<nav class="navbar">
+<nav class="navbar" aria-label="Main navigation">
   <div class="navbar-inner">
     <a href="/" class="navbar-brand">Sticks & Steaks</a>
-    <div class="navbar-links">
-      <a href="/" class="navbar-link">Dots</a>
-      <a href="/birdies/" class="navbar-link">Birdies</a>
-      <a href="/play/" class="navbar-link">Play</a>
+    <div class="navbar-links" role="list">
+      <a href="/" class="navbar-link" role="listitem" {% if page.url == '/' %}aria-current="page"{% endif %}>Dots</a>
+      <a href="/birdies/" class="navbar-link" role="listitem" {% if page.url == '/birdies/' %}aria-current="page"{% endif %}>Birdies</a>
+      <a href="/play/" class="navbar-link" role="listitem" {% if page.url == '/play/' %}aria-current="page"{% endif %}>Play</a>
     </div>
   </div>
 </nav>
 
-
+<main id="main-content">
   {{ content }}
+</main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <p class="footer-title">Sticks &amp; Steaks</p>
       <p class="footer-tagline">don't threaten us with a good time</p>

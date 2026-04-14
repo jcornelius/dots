@@ -6,17 +6,17 @@ description: "don't threaten us with a good time"
 
 
 <!-- ── Hero ──────────────────────────────────────────────── -->
-<section class="hero">
+<section class="hero" aria-label="Welcome">
   <div class="hero-content">
     <h1 class="hero-title">Sticks &amp; Steaks</h1>
     <p class="hero-subtitle">"don't threaten us with a good time"</p>
-    <div class="hero-divider"></div>
+    <div class="hero-divider" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- ── Limerick Section ──────────────────────────────────── -->
-<section class="limerick-section">
-  <hr class="limerick-rule">
+<section class="limerick-section" aria-label="Limerick">
+  <hr class="limerick-rule" aria-hidden="true">
   <p class="limerick">
     Old mates scattered far do convene,<br>
     to hack up the fairways and greens,<br>
@@ -27,10 +27,10 @@ description: "don't threaten us with a good time"
 </section>
 
 <!-- ── Charter Section ───────────────────────────────────── -->
-<section class="charter-section">
+<section class="charter-section" aria-labelledby="charter-heading-quorum">
   <div class="charter-inner">
     <div class="charter-block charter-block--highlight">
-      <h2>Quorum</h2>
+      <h2 id="charter-heading-quorum">Quorum</h2>
       <p>The gatherings may happen anywhere, at any time, so long as three people attend, play at least two rounds of golf, eat steaks and smoke cigars at least one night.</p>
     </div>
     <div class="charter-block charter-block--highlight">
@@ -41,128 +41,128 @@ description: "don't threaten us with a good time"
 </section>
 
 <!-- ── Dots Section ──────────────────────────────────────── -->
-<section class="dots-section">
+<section class="dots-section" aria-labelledby="dots-heading">
 
   <div class="section-header">
-    <h2 class="section-title">Dots</h2>
+    <h2 class="section-title" id="dots-heading">Dots</h2>
     <p class="section-subtitle">The Official Golf Side Game of Sticks &amp; Steaks</p>
-    <hr class="section-rule">
+    <hr class="section-rule" aria-hidden="true">
   </div>
 
   <!-- 1 Dot -->
-  <div class="tier">
+  <div class="tier" role="region" aria-label="1 Dot achievements">
     <div class="tier-header">
-      <div class="dot-pip-group">
+      <div class="dot-pip-group" aria-hidden="true">
         <span class="dot-pip"></span>
       </div>
-      <span class="tier-label">1 Dot</span>
+      <h3 class="tier-label">1 Dot</h3>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-name">Skin</div>
-        <div class="card-desc">Win the hole outright — no ties.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Closest to the Pin</div>
-        <div class="card-desc">Nearest to the hole on a par 3 after all players have teed off.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Greenie</div>
-        <div class="card-desc">Land on the green from the tee shot on a par 3.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Barky</div>
-        <div class="card-desc">Make par on a hole after your ball has hit a tree.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Sandy</div>
-        <div class="card-desc">Make par after your ball has been in a bunker.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Poley</div>
-        <div class="card-desc">Drain a putt longer than the flagpole.</div>
-      </div>
-    </div>
+    <ul class="cards" role="list">
+      <li class="card">
+        <h4 class="card-name">Skin</h4>
+        <p class="card-desc">Win the hole outright — no ties.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Closest to the Pin</h4>
+        <p class="card-desc">Nearest to the hole on a par 3 after all players have teed off.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Greenie</h4>
+        <p class="card-desc">Land on the green from the tee shot on a par 3.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Barky</h4>
+        <p class="card-desc">Make par on a hole after your ball has hit a tree.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Sandy</h4>
+        <p class="card-desc">Make par after your ball has been in a bunker.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Poley</h4>
+        <p class="card-desc">Drain a putt longer than the flagpole.</p>
+      </li>
+    </ul>
   </div>
 
   <!-- 2 Dots -->
-  <div class="tier">
+  <div class="tier" role="region" aria-label="2 Dot achievements">
     <div class="tier-header">
-      <div class="dot-pip-group">
+      <div class="dot-pip-group" aria-hidden="true">
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
       </div>
-      <span class="tier-label">2 Dots</span>
+      <h3 class="tier-label">2 Dots</h3>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-name">Chippy</div>
-        <div class="card-desc">Hole out from off the green — chip, pitch, or bump-and-run.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Birdie</div>
-        <div class="card-desc">Complete the hole in one under par.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Wet Dream</div>
-        <div class="card-desc">Save par after your ball has been in a water hazard.
+    <ul class="cards" role="list">
+      <li class="card">
+        <h4 class="card-name">Chippy</h4>
+        <p class="card-desc">Hole out from off the green — chip, pitch, or bump-and-run.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Birdie</h4>
+        <p class="card-desc">Complete the hole in one under par.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Wet Dream</h4>
+        <p class="card-desc">Save par after your ball has been in a water hazard.
           <span class="card-note">Skipping it off the water still counts.</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-name">Low Putts (per 9)</div>
-        <div class="card-desc">The player with the fewest puts on each 9 holes.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Low Gross Score (per 9)</div>
-        <div class="card-desc">Total strokes scored.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Low Net Score (per 9)</div>
-        <div class="card-desc">Handicap adjusted strokes scored.</div>
-      </div>
-    </div>
+        </p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Low Putts (per 9)</h4>
+        <p class="card-desc">The player with the fewest puts on each 9 holes.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Low Gross Score (per 9)</h4>
+        <p class="card-desc">Total strokes scored.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Low Net Score (per 9)</h4>
+        <p class="card-desc">Handicap adjusted strokes scored.</p>
+      </li>
+    </ul>
   </div>
 
   <!-- 3 Dots -->
-  <div class="tier">
+  <div class="tier" role="region" aria-label="3 Dot achievements">
     <div class="tier-header">
-      <div class="dot-pip-group">
+      <div class="dot-pip-group" aria-hidden="true">
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
       </div>
-      <span class="tier-label">3 Dots</span>
+      <h3 class="tier-label">3 Dots</h3>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-name">Eagle</div>
-        <div class="card-desc">Complete the hole in two under par.</div>
-      </div>
-    </div>
+    <ul class="cards" role="list">
+      <li class="card">
+        <h4 class="card-name">Eagle</h4>
+        <p class="card-desc">Complete the hole in two under par.</p>
+      </li>
+    </ul>
   </div>
 
   <!-- 4 Dots -->
-  <div class="tier">
+  <div class="tier" role="region" aria-label="4 Dot achievements">
     <div class="tier-header">
-      <div class="dot-pip-group">
+      <div class="dot-pip-group" aria-hidden="true">
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
         <span class="dot-pip"></span>
       </div>
-      <span class="tier-label">4 Dots</span>
+      <h3 class="tier-label">4 Dots</h3>
     </div>
-    <div class="cards">
-      <div class="card">
-        <div class="card-name">Ace</div>
-        <div class="card-desc">Hole in one. Buy a round.</div>
-      </div>
-      <div class="card">
-        <div class="card-name">Albatross</div>
-        <div class="card-desc">Complete the hole in three under par.</div>
-      </div>
-    </div>
+    <ul class="cards" role="list">
+      <li class="card">
+        <h4 class="card-name">Ace</h4>
+        <p class="card-desc">Hole in one. Buy a round.</p>
+      </li>
+      <li class="card">
+        <h4 class="card-name">Albatross</h4>
+        <p class="card-desc">Complete the hole in three under par.</p>
+      </li>
+    </ul>
   </div>
 
   <!-- Rules Notes -->
