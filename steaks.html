@@ -1,0 +1,41 @@
+---
+layout: default
+title: Steaks | Sticks & Steaks
+description: "Photo gallery of our finest steaks"
+---
+
+
+<!-- ── Gallery Hero ──────────────────────────────────────────── -->
+<section class="gallery-hero gallery-hero--steaks" aria-label="Steaks gallery">
+  <div class="gallery-hero-content">
+    <h1 class="hero-title">Steaks</h1>
+    <p class="hero-subtitle">The finest cuts from our gatherings</p>
+    <div class="hero-divider" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ── Photo Gallery ────────────────────────────────────────── -->
+<section class="gallery-section" aria-labelledby="gallery-title">
+  <h2 id="gallery-title" class="sr-only">Photo Gallery</h2>
+  <div class="gallery-grid" role="list">
+    {% assign steak_images = site.static_files | where_exp: "file", "file.path contains '/images/steaks/'" %}
+
+    {% if steak_images.size > 0 %}
+      {% for image in steak_images %}
+        {% assign ext = image.extname | downcase %}
+        {% if ext == '.jpg' or ext == '.jpeg' or ext == '.png' or ext == '.gif' or ext == '.webp' %}
+          {% assign filename = image.basename | replace: '-', ' ' | replace: '_', ' ' %}
+          <div class="gallery-item" role="listitem">
+            <img src="{{ image.path | relative_url }}" alt="{{ filename }}" class="gallery-image" loading="lazy">
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <div class="gallery-empty" role="listitem">
+        <div class="empty-icon" aria-hidden="true">🥩</div>
+        <h3>No photos yet</h3>
+        <p>Add images to the <code>images/steaks/</code> folder to see them here.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
